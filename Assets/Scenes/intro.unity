@@ -157,21 +157,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcaf6608f1e284b408814595bcc42f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 400
+  crab: {fileID: 978220744}
   chatBox: {fileID: 1159519892}
   char1IdleObj: {fileID: 531077301}
   char1TalkObj: {fileID: 391426741}
   char2Animator: {fileID: 978220748}
   dialogueLines:
   - speaker: Char1
-    text: Char1text
+    text: d1
   - speaker: Char2
-    text: char2text
+    text: d2
   - speaker: Char1
-    text: Char1text
+    text: d3
   - speaker: Char2
-    text: Char2text
+    text: d4
   - speaker: Char1
-    text: Char1text
+    text: d5
 --- !u!4 &416526612
 Transform:
   m_ObjectHideFlags: 0
@@ -289,7 +291,7 @@ GameObject:
   - component: {fileID: 978220746}
   - component: {fileID: 978220748}
   m_Layer: 0
-  m_Name: 01
+  m_Name: crab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.74, y: 1.28}
+  m_AnchoredPosition: {x: 0.2, y: -0.55999994}
   m_SizeDelta: {x: 37.63245, y: 8.74217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159519892
@@ -505,7 +507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: char1 test
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -568,7 +570,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 27.34882, y: 8.267422, z: 10.145887, w: 9.28688}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

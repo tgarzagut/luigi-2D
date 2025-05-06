@@ -2,9 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueSystem : MonoBehaviour
 {
+    public float moveSpeed = 2f;
+    private bool shouldMove = false;
+    public GameObject crab;
+    private bool crab_move = false;
     public TMP_Text chatBox;
 
     // Char1: Prefab switching
@@ -58,28 +63,44 @@ public class DialogueSystem : MonoBehaviour
         ShowLine();
     }
 
-    void Update()
-    {
-        if (dialogueLines.Count == 0) return;
+ void Update() {
+    if (dialogueLines.Count == 0) return;
 
+    // Handle dialogue progression
+    if (currentLine < dialogueLines.Count - 1)
+    {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             currentLine++;
-            if (currentLine < dialogueLines.Count)
-            {
-                ShowLine();
-            }
-            else
-            {
-                chatBox.text = "";
+            ShowLine();
 
-                char1IdleObj.SetActive(true);
-                char1TalkObj.SetActive(false);
-
-                char2Animator.Play("crab_idle");
+            if (currentLine == dialogueLines.Count - 1)
+            {
+                crab_move = true;
+                char2Animator.Play("crab_walk");
             }
         }
     }
+    else if (currentLine == dialogueLines.Count - 1 && Input.GetKeyDown(KeyCode.Return))
+    {
+        chatBox.text = "Press Space to Begin.";
+        currentLine++; 
+        char1IdleObj.SetActive(true);
+        char1TalkObj.SetActive(false);
+        char2Animator.Play("crab_idle");
+    }
+
+    if (crab_move)
+    {
+        crab.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+    }
+
+    // Allow scene change
+    if (currentLine >= dialogueLines.Count && Input.GetKeyDown(KeyCode.Space))
+    {
+        SceneManager.LoadScene("Gameplay");
+    }
+}
 
     void ShowLine()
     {

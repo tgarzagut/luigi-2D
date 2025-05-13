@@ -164,16 +164,20 @@ MonoBehaviour:
   char1TalkObj: {fileID: 391426741}
   char2Animator: {fileID: 978220748}
   dialogueLines:
-  - speaker: Char1
-    text: d1
   - speaker: Char2
-    text: d2
-  - speaker: Char1
-    text: d3
+    text: Bubble Scout! Our town is cursed!
   - speaker: Char2
-    text: d4
+    text: There's a sunken pirate ship, and one of their chests is making the environment
+      go toxic!
   - speaker: Char1
-    text: d5
+    text: What can I do?
+  - speaker: Char2
+    text: Find their treasure, and be wary of opening the cursed chest, we don't
+      know what will happen.
+  - speaker: Char2
+    text: Make sure to avoid all rocks and plants, they've been hurting the sea life.
+  - speaker: Char1
+    text: Ok..... I'll save the cursed chest for last.
 --- !u!4 &416526612
 Transform:
   m_ObjectHideFlags: 0
@@ -541,7 +545,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 32
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -550,7 +554,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

@@ -3,9 +3,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public Animator animator; // Animator of the prefab
+    public float waterResistance = 0.9f;
+    public Animator animator;
 
     private Rigidbody2D rb;
+    private Vector2 currentVelocity;
 
     void Start()
     {
@@ -23,19 +25,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float verticalInput = Input.GetKey(KeyCode.UpArrow) ? 1f : 0f;
+        float horizontalInput = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right
+        float verticalInput = Input.GetAxisRaw("Vertical");     // W/S or Up/Down
 
-        // Trigger jump animation when moving up
-        if (verticalInput > 0f)
+        Vector2 inputVector = new Vector2(horizontalInput, verticalInput).normalized;
+        currentVelocity = inputVector * moveSpeed;
+
+        rb.velocity = currentVelocity * waterResistance;
+
+        if (Input.GetKeyDown(KeyCode.W))
         {
             animator.SetTrigger("Jumping_t");
         }
-        else
-        {
-            animator.SetTrigger("Idle_t"); // Use a Trigger for idle animation
-        }
-
-        // Apply movement in the Rigidbody
-        rb.velocity = new Vector2(0, verticalInput * moveSpeed);
     }
 }
